@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route, withRouter } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import "./App.scss";
+import "./scss/App.scss";
 import { Authentication } from "./Pages/Authentication";
 import { RootStore } from "./store/RootStore";
 import { Provider } from "mobx-react";

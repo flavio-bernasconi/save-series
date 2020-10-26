@@ -1,0 +1,47 @@
+.form-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  .btns-group {
+    button {
+      width: 50%;
+      border: 0;
+      padding: 20px 0;
+    }
+    .btn-active {
+      background-color: black;
+      color: white;
+    }
+  }
+  .form {
+    width: 500px;
+    background-color: white;
+    margin: auto;
+    padding: 100px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    .input-field {
+      margin-bottom: 60px;
+      display: flex;
+      flex-wrap: wrap;
+      label {
+        width: 100%;
+        margin-bottom: 10px;
+        text-transform: capitalize;
+      }
+      input {
+        height: 40px;
+        width: 100%;
+        font-size: 20px;
+      }
+    }
+    .btn-submit {
+      padding: 20px 30px;
+      border: none;
+      background-color: $black;
+      color: white;
+    }
+  }
+}
