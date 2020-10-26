@@ -25,13 +25,13 @@ const ImageSerieModel = t.model("ImageSerieModel", {
 export const RootStore = t
   .model("RootStore", {
     currentUser: t.optional(t.frozen(), {}),
-    userToken: t.optional(t.string, ""),
     currentPageResults: t.optional(t.number, initialNumberOfPages),
     datesetSeries: t.optional(t.array(MovieModel), []),
     relatedSeries: t.optional(t.array(MovieModel), []),
     selectedSerie: t.optional(t.frozen(), {}),
     isSaving: t.optional(t.frozen(), {}),
     imagesSerie: t.optional(t.array(t.string), []),
+    restoredScroll: t.optional(t.number, 0),
     // relatedChords: t.optional(t.array(t.frozen()), []),
     // rootOctave: t.optional(t.string, ""),
     // inversion: t.optional(t.number, 0),
@@ -41,33 +41,34 @@ export const RootStore = t
     setCurrentUser(user) {
       self.currentUser = user;
     },
-    setUserToken(token) {
-      self.userToken = token;
-    },
     setCurrentPageResults() {
       self.currentPageResults = self.currentPageResults + 1;
     },
     fetchMoreSeries() {
       self.setCurrentPageResults();
-      const moviesToAdd = ky
+      const seriesToadd = ky
         .get(mainUrl + "&page=" + self.currentPageResults)
         .json();
-      moviesToAdd.then((res) => {
+      seriesToadd.then((res) => {
         setTimeout(() => {
           self.setDatasetSeries([
             ...self.datesetSeries,
             ...cleanDataset(res.results),
           ]);
-        }, 1700);
+        }, 1300);
       });
     },
     setDatasetSeries(dataset) {
       self.datesetSeries = dataset;
     },
     fetchSeries() {
-      getPopulatSerie()
-        .then((res) => self.setDatasetSeries(cleanDataset(res)))
-        .catch((err) => console.log(err));
+      if (self.currentPageResults === 1) {
+        getPopulatSerie()
+          .then((res) => self.setDatasetSeries(cleanDataset(res)))
+          .catch((err) => console.log(err));
+      } else {
+        console.log("aoi");
+      }
     },
     async fetchSingleSerieDetails(id) {
       self.setSelectedSerie(await getSingleSerieDetails(id));
@@ -79,6 +80,9 @@ export const RootStore = t
     },
     setRelatedSeries(data) {
       self.relatedSeries = cleanDataset(data.results);
+    },
+    setRestoredScroll(scrollTop) {
+      self.restoredScroll = scrollTop;
     },
     setImagesSerie(data) {
       const backdropsPaths = data.backdrops

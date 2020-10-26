@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { inject, observer } from "mobx-react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { transition } from "../utils/const";
@@ -10,9 +10,20 @@ import ButtonsSave from "./ButtonsSave";
 
 export const SliderMovies = inject("rootStore")(
   observer(function SliderMovies({
-    rootStore: { datesetSeries, fetchMoreSeries, fetchSingleSerieDetails },
+    rootStore: {
+      datesetSeries,
+      fetchMoreSeries,
+      fetchSingleSerieDetails,
+      setRestoredScroll,
+      restoredScroll,
+    },
   }) {
     const [indexSelected, setIndexSelected] = useState();
+    useEffect(() => {
+      setTimeout(() => {
+        window.scrollTo({ top: restoredScroll, behavior: "smooth" });
+      }, 50);
+    }, []);
 
     return (
       <motion.div
@@ -61,9 +72,10 @@ export const SliderMovies = inject("rootStore")(
                   >
                     <Link
                       to={`/${id}`}
-                      onClick={() => {
+                      onClick={(e) => {
                         fetchSingleSerieDetails(id);
                         setIndexSelected(index);
+                        setRestoredScroll(document.documentElement.scrollTop);
                       }}
                     >
                       <motion.img
