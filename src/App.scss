@@ -1,0 +1,412 @@
+$navbar-height: 70px;
+$black: #292929;
+$max-width-container: 1400px;
+$breakpoint-small-desktop: 1200px;
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 450px;
+
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;700&display=swap");
+
+@font-face {
+  font-family: "Maragsa";
+  src: url("../src/fonts/Maragsâ-Display.otf");
+  font-style: normal;
+}
+
+body {
+  /* overflow: hidden; */
+  background-color: $black;
+  margin: 0;
+  font-family: "Josefin Sans";
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  background-color: transparent;
+  width: 100%;
+  z-index: 999;
+  height: $navbar-height;
+  a {
+    font-size: 2rem;
+    color: black;
+    text-decoration: none;
+    margin-right: 100px;
+  }
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+.container h2 {
+  text-align: center;
+  margin: 25px auto;
+}
+
+.list {
+  max-width: 2000px;
+  margin: auto;
+}
+
+.movie-cards-container {
+  position: relative;
+  margin-top: $navbar-height;
+  max-width: 1400px;
+  margin: auto;
+  .movie-card {
+    width: calc(100% / 5);
+    position: relative;
+    opacity: 0.5;
+    @media (max-width: $breakpoint-small-desktop) {
+      width: calc(100% / 4);
+    }
+    @media (max-width: $breakpoint-tablet) {
+      width: calc(100% / 2);
+    }
+    @media (max-width: $breakpoint-mobile) {
+      width: 100%;
+      padding: 40px;
+      margin: auto;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+    img {
+      width: 100%;
+      display: block;
+      margin: auto;
+    }
+    .card-buttons-container {
+      position: absolute;
+      bottom: 0;
+      display: none;
+      width: 100%;
+      .buttons-save {
+        height: 50px;
+        display: flex;
+        color: white;
+        .btn-save {
+          width: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          background-color: rgb(92, 92, 92);
+          opacity: 0.7;
+          p {
+            font-weight: bold;
+            text-transform: uppercase;
+          }
+          &:hover {
+            cursor: pointer;
+            opacity: 1;
+          }
+        }
+      }
+    }
+    .button-info {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: 0;
+      transform: translate(-50%, -50%);
+      display: none;
+      font-size: 4rem;
+      color: white;
+    }
+    &:hover {
+      opacity: 1;
+      .card-buttons-container,
+      .button-info {
+        display: block;
+      }
+    }
+  }
+}
+
+.infinite-scroll-component {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.btn-active {
+  background-color: red;
+}
+
+.loader {
+  width: 100%;
+  height: 100px;
+  padding-top: 40px;
+  .loader-dot {
+    height: 10px;
+    margin: 40px auto;
+    border-radius: 10px;
+    background: #fff;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.single-serie {
+  position: relative;
+  .wrapper-header {
+    height: 70vh;
+    color: #333;
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -3;
+    .blur-image {
+      transform-style: preserve-3d;
+      width: 100%;
+      height: 70vh;
+      background-size: cover;
+      filter: blur(100px);
+      position: absolute;
+      top: 0;
+      z-index: -3;
+    }
+    .poster {
+      width: 300px;
+      margin: auto 0;
+      transform-style: preserve-3d;
+      z-index: 5;
+      border-radius: 10px;
+      &.hidden {
+        display: none;
+      }
+    }
+  }
+  .content {
+    transform: translateZ(0);
+    width: 100%;
+    background-color: $black;
+    color: white;
+    z-index: 3;
+    padding: 0;
+    box-sizing: border-box;
+    box-shadow: inset 10px 10px 30px black;
+    .container {
+      max-width: $max-width-container;
+      margin: auto;
+      position: relative;
+      .first-section {
+        display: flex;
+        align-items: flex-start;
+        padding: 120px 0;
+        @media (max-width: $breakpoint-tablet) {
+          flex-wrap: wrap;
+          padding: 30px;
+        }
+        .title-description {
+          width: 50%;
+          padding: 40px;
+          position: sticky;
+          top: $navbar-height;
+          height: auto;
+          @media (max-width: $breakpoint-tablet) {
+            position: relative;
+            width: 100%;
+            padding: 50px;
+          }
+          @media (max-width: $breakpoint-mobile) {
+            position: relative;
+            width: 100%;
+            padding: 30px;
+            padding-top: 0;
+          }
+          h1 {
+            font-family: "Josefin Sans";
+            letter-spacing: 1px;
+            font-size: 6rem;
+            margin-bottom: 50px;
+            @media (max-width: $breakpoint-mobile) {
+              font-size: 4rem;
+            }
+          }
+          p {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            font-weight: 300;
+            line-height: 2.5rem;
+          }
+        }
+        .table-details {
+          min-height: 100vh;
+          width: 50%;
+          @media (max-width: $breakpoint-tablet) {
+            width: 100%;
+            padding: 50px;
+          }
+          @media (max-width: $breakpoint-mobile) {
+            padding: 30px;
+          }
+          .row-detail {
+            border-bottom: solid 1px white;
+            padding: 50px 0;
+            &:last-child {
+              border-bottom: none;
+            }
+            p {
+              margin-bottom: 20px;
+            }
+            h1:not(:first-child):not(:last-child) {
+              margin-bottom: 15px;
+            }
+            &.flex {
+              display: flex;
+              div:first-child {
+                margin-right: 100px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .buttons-save {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    display: flex;
+    color: $black;
+    @media (max-width: $breakpoint-mobile) {
+      flex-wrap: wrap;
+    }
+    .btn-save {
+      padding: 30px 40px;
+      width: 100px;
+      text-transform: uppercase;
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.3s;
+      @media (max-width: $breakpoint-mobile) {
+        padding: 20px 30px;
+      }
+      &:nth-child(2) {
+        border-left: solid 3px $black;
+        border-right: solid 3px $black;
+      }
+      &:hover {
+        cursor: pointer;
+        // background-color: #fbce41 !important;
+      }
+    }
+  }
+  .related-series {
+    width: 100%;
+    z-index: -7;
+    background-color: $black;
+    max-width: $max-width-container;
+    margin: 50px auto;
+    h1 {
+      width: 100%;
+      font-size: 3rem;
+      color: rgb(66, 66, 66);
+      margin-bottom: 30px;
+    }
+    .scrollable-posters {
+      overflow-x: scroll;
+      display: flex;
+      .related-poster {
+        width: 180px;
+        box-shadow: 10px 10px 20px black;
+      }
+    }
+  }
+}
+
+$folder-height: 80px;
+$folder-width: 110px;
+
+.wrapper-animation {
+  .folder {
+    width: $folder-width;
+    height: $folder-height;
+    background-color: rgb(204, 204, 204);
+    box-shadow: 0 0 10px black;
+    position: fixed;
+    z-index: 4;
+    display: none;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 5px;
+    color: $black;
+    &.active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .folder-back {
+    width: calc(#{$folder-width} - 50px);
+    height: 20px;
+    border-radius: 5px;
+    border-top-right-radius: 20px;
+    background-color: rgb(170, 170, 170);
+    position: fixed;
+    z-index: 2;
+    display: none;
+    bottom: calc(#{$folder-height} + 10px);
+    right: 70px;
+    &.active {
+      display: block;
+    }
+  }
+  .saving-animation {
+    width: 80px;
+    position: fixed;
+    display: none;
+    bottom: 15vh;
+    transform-origin: 50% 50%;
+    z-index: 3;
+    right: 30px;
+    &.active {
+      display: block;
+      transform-origin: 50% 50%;
+      animation: saving 2s linear 1s forwards;
+    }
+  }
+}
+
+@keyframes saving {
+  0% {
+    bottom: 15vh;
+  }
+
+  15% {
+    bottom: 20px;
+    opacity: 1;
+  }
+  70% {
+    bottom: 20px;
+    width: 10px;
+  }
+  100% {
+    width: 10px;
+    bottom: 20px;
+    opacity: 0;
+  }
+}
+
+.poster-single-serie {
+  display: flex;
+  overflow-x: scroll;
+  margin-left: 50%;
+}
