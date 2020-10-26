@@ -1,7 +1,7 @@
 import React from "react";
 
 const GenericDetail = ({ movieDbKey }) =>
-  movieDbKey.map((e) => <h1>{e.name}</h1>);
+  movieDbKey.map((e, i) => <h1 key={i}>{e.name}</h1>);
 
 const GenericRow = ({ movieDbKey, label }) => (
   <div className="row-detail">

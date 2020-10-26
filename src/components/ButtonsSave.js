@@ -21,7 +21,7 @@ const ButtonsSave = inject("rootStore")(
     return (
       <>
         <div className="buttons-save">
-          {DB_FOLDERS.map((folder) => {
+          {DB_FOLDERS.map((folder, i) => {
             const { name, label, color } = folder;
             return (
               <motion.div
@@ -37,6 +37,7 @@ const ButtonsSave = inject("rootStore")(
                 }}
                 style={{ backgroundColor: color }}
                 whileHover={{ scale: 0.9 }}
+                key={i}
               >
                 <p>{label}</p>
               </motion.div>
