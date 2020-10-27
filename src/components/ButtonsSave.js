@@ -14,7 +14,7 @@ const ButtonsSave = inject("rootStore")(
         setIsSaving(true, refDb, movie.image);
         setTimeout(() => {
           setIsSaving(false);
-        }, 3000);
+        }, 1800);
       });
     };
 
@@ -36,7 +36,6 @@ const ButtonsSave = inject("rootStore")(
                   y: 0,
                 }}
                 style={{ backgroundColor: color }}
-                whileHover={{ scale: 0.9 }}
                 key={i}
               >
                 <p>{label}</p>

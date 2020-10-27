@@ -19,6 +19,7 @@ export const SliderMovies = inject("rootStore")(
     },
   }) {
     const [indexSelected, setIndexSelected] = useState();
+    const [isAccordionOpen, setIsAccordionOpen] = useState(false);
     useEffect(() => {
       setTimeout(() => {
         window.scrollTo({ top: restoredScroll, behavior: "smooth" });
@@ -74,21 +75,38 @@ export const SliderMovies = inject("rootStore")(
                       to={`/${id}`}
                       onClick={(e) => {
                         fetchSingleSerieDetails(id);
-                        setIndexSelected(index);
                         setRestoredScroll(document.documentElement.scrollTop);
                       }}
+                      onMouseEnter={() => setIndexSelected(index)}
                     >
                       <motion.img
                         className={
                           indexSelected === index ? "selected-element" : ""
                         }
-                        src={`https://image.tmdb.org/t/p/w500${image}`}
+                        src={`https://image.tmdb.org/t/p/w342${image}`}
                         alt="movie poster"
                       />
                       <h1 className="button-info">+</h1>
                     </Link>
                     <div className="card-buttons-container">
-                      <ButtonsSave movie={movie} />
+                      <div
+                        className="accordion-btns"
+                        onClick={() => setIsAccordionOpen(!isAccordionOpen)}
+                        onMouseLeave={() => setIsAccordionOpen(false)}
+                      >
+                        <div
+                          className={
+                            indexSelected === index && isAccordionOpen
+                              ? "open"
+                              : "close"
+                          }
+                        >
+                          <ButtonsSave movie={movie} />
+                        </div>
+                        <div className="btn-open">
+                          <p> {!isAccordionOpen ? "save" : "close"}</p>
+                        </div>
+                      </div>
                     </div>
                   </motion.div>
                 );

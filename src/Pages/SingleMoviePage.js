@@ -46,7 +46,7 @@ export const SingleMoviePage = inject("rootStore")(
         >
           <div className="wrapper-animation">
             <motion.img
-              src={`https://image.tmdb.org/t/p/w500${image}`}
+              src={`https://image.tmdb.org/t/p/w342${image}`}
               alt="movie poster"
               className={`poster saving-animation ${value ? "active" : ""}`}
             />

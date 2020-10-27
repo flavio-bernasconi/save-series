@@ -55,7 +55,7 @@ export const RootStore = t
             ...self.datesetSeries,
             ...cleanDataset(res.results),
           ]);
-        }, 1300);
+        }, 800);
       });
     },
     setDatasetSeries(dataset) {

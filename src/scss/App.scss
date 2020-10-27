@@ -1,11 +1,6 @@
-$navbar-height: 70px;
-$black: #292929;
-$max-width-container: 1400px;
-$breakpoint-small-desktop: 1200px;
-$breakpoint-tablet: 768px;
-$breakpoint-mobile: 450px;
-
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;700&display=swap");
+
+@import "./const";
 @import "./form";
 
 body {
@@ -61,7 +56,7 @@ img {
   .movie-card {
     width: calc(100% / 5);
     position: relative;
-    opacity: 0.5;
+    opacity: 0.7;
     transition: opacity 0.3s;
     @media (max-width: $breakpoint-small-desktop) {
       width: calc(100% / 4);
@@ -87,25 +82,53 @@ img {
       bottom: 0;
       display: none;
       width: 100%;
-      .buttons-save {
-        height: 50px;
-        display: flex;
-        color: white;
-        .btn-save {
-          width: 50%;
+      @media (max-width: $breakpoint-tablet) {
+        display: block;
+      }
+      .accordion-btns {
+        width: 100%;
+        .open {
+          display: block;
+        }
+        .close {
+          display: none;
+        }
+        .btn-open {
+          width: 100%;
+          background-color: white;
+          padding: 15px 0;
           display: flex;
           align-items: center;
-          justify-content: center;
-          text-align: center;
-          background-color: rgb(92, 92, 92);
-          opacity: 0.7;
+          margin: auto;
           p {
-            font-weight: bold;
-            text-transform: uppercase;
+            width: 100%;
+            text-align: center;
+            text-transform: capitalize;
           }
-          &:hover {
-            cursor: pointer;
-            opacity: 1;
+        }
+        .buttons-save {
+          display: flex;
+          flex-wrap: wrap;
+          color: white;
+          .btn-save {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: auto;
+
+            background-color: rgb(92, 92, 92);
+            opacity: 0.7;
+            padding: 20px 0;
+            p {
+              font-weight: bold;
+              text-transform: uppercase;
+            }
+            &:hover {
+              cursor: pointer;
+              opacity: 1;
+            }
           }
         }
       }
@@ -120,6 +143,7 @@ img {
       font-size: 4rem;
       color: white;
     }
+
     &:hover {
       opacity: 1;
       .card-buttons-container,
