@@ -85,6 +85,10 @@ img {
       @media (max-width: $breakpoint-tablet) {
         display: block;
       }
+      @media (max-width: $breakpoint-mobile) {
+        width: calc(100% - 80px);
+        margin: auto;
+      }
       .accordion-btns {
         width: 100%;
         .open {
