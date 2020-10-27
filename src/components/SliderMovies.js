@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Loader } from "./Loader";
 import ButtonsSave from "./ButtonsSave";
+import { Palette } from "react-palette";
 
 export const SliderMovies = inject("rootStore")(
   observer(function SliderMovies({
@@ -43,6 +44,8 @@ export const SliderMovies = inject("rootStore")(
             >
               {datesetSeries.map((movie, index) => {
                 const { id, image } = movie;
+
+                console.log();
                 return (
                   <motion.div
                     className={"movie-card"}

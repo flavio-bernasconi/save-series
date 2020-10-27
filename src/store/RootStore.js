@@ -64,7 +64,9 @@ export const RootStore = t
     fetchSeries() {
       if (self.currentPageResults === 1) {
         getPopulatSerie()
-          .then((res) => self.setDatasetSeries(cleanDataset(res)))
+          .then((res) => {
+            self.setDatasetSeries(cleanDataset(res));
+          })
           .catch((err) => console.log(err));
       } else {
         console.log("aoi");

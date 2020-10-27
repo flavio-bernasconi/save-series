@@ -20,7 +20,9 @@ export function CardContent({ selectedSerie }) {
     number_of_episodes,
     number_of_seasons,
     vote_average,
+    first_air_date: startDate,
   } = selectedSerie;
+  console.log(selectedSerie);
   return (
     <div className="container">
       <div className="first-section">
@@ -41,6 +43,10 @@ export function CardContent({ selectedSerie }) {
               <p>Seasons</p>
               <h1>{number_of_seasons}</h1>
             </div>
+          </div>
+          <div className="row-detail">
+            <p>Year</p>
+            <h1>{startDate.slice(0, 4)}</h1>
           </div>
           <div className="row-detail">
             <p>Rate</p>
