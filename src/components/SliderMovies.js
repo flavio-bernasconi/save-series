@@ -75,7 +75,7 @@ export const SliderMovies = inject("rootStore")(
                     key={index}
                   >
                     <Link
-                      to={`/${id}`}
+                      to={`/serie/${id}`}
                       onClick={(e) => {
                         fetchSingleSerieDetails(id);
                         setRestoredScroll(document.documentElement.scrollTop);
@@ -94,7 +94,10 @@ export const SliderMovies = inject("rootStore")(
                     <div className="card-buttons-container">
                       <div
                         className="accordion-btns"
-                        onClick={() => setIsAccordionOpen(!isAccordionOpen)}
+                        onClick={() => {
+                          setIsAccordionOpen(!isAccordionOpen);
+                          setIndexSelected(index);
+                        }}
                         onMouseLeave={() => setIsAccordionOpen(false)}
                       >
                         <div
@@ -107,7 +110,11 @@ export const SliderMovies = inject("rootStore")(
                           <ButtonsSave movie={movie} />
                         </div>
                         <div className="btn-open">
-                          <p> {!isAccordionOpen ? "save" : "close"}</p>
+                          <p>
+                            {indexSelected === index && isAccordionOpen
+                              ? "close"
+                              : "save"}
+                          </p>
                         </div>
                       </div>
                     </div>

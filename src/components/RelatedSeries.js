@@ -45,7 +45,7 @@ export const RelatedSeries = inject("rootStore")(
                 key={index}
               >
                 <Link
-                  to={`/${serie.id}`}
+                  to={`/serie/${serie.id}`}
                   onClick={() => {
                     setTimeout(() => {
                       fetchSingleSerieDetails(serie.id);

@@ -20,7 +20,7 @@ export const SingleMoviePage = inject("rootStore")(
     const location = useLocation();
 
     useEffect(() => {
-      const getIdFromUrl = location.pathname.slice(1);
+      const getIdFromUrl = location.pathname.slice(7);
       window.scrollTo(0, 0);
       if (Object.keys(selectedSerie).length === 0)
         fetchSingleSerieDetails(getIdFromUrl);

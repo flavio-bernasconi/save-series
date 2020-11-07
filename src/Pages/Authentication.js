@@ -34,6 +34,7 @@ export const Authentication = () => {
     if (isSignInOrRegister === "signIn") {
       auth()
         .signInWithEmailAndPassword(email, password)
+        .then((e) => (window.location.pathname = "/home"))
         .catch(function (error) {
           console.log(error);
           setError(error);
@@ -43,6 +44,7 @@ export const Authentication = () => {
     if (isSignInOrRegister === "register") {
       auth()
         .createUserWithEmailAndPassword(email, password)
+        .then((e) => (window.location.pathname = "/home"))
         .catch(function (error) {
           console.log(error);
           setError(error);

@@ -9,6 +9,7 @@ import { auth } from "./firebase";
 import { Home } from "./Pages/Home";
 import { SingleMoviePage } from "./Pages/SingleMoviePage";
 import { NavBar } from "./components/NavBar";
+import { Redirect } from "react-router";
 
 const rootStore = RootStore.create();
 window.STATE = rootStore;
@@ -30,10 +31,10 @@ function App() {
             render={({ location }) => (
               <AnimatePresence initial={true} exitBeforeEnter>
                 <Switch location={location} key={location.pathname}>
-                  <Route exact path="/" component={withRouter(Home)} />
+                  <Route exact path="/home" component={withRouter(Home)} />
                   <Route
                     exact
-                    path="/:serieId"
+                    path="/serie/:serieId"
                     component={withRouter(SingleMoviePage)}
                   />
                 </Switch>
@@ -43,7 +44,8 @@ function App() {
         </BrowserRouter>
       ) : (
         <Switch>
-          <Route exact path="/" component={Authentication} />
+          <Route exact path="/login" component={Authentication} />
+          {/* <Route render={() => <Redirect to="/login" />} /> */}
         </Switch>
       )}
     </Provider>
