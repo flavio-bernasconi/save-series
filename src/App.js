@@ -31,7 +31,7 @@ function App() {
             render={({ location }) => (
               <AnimatePresence initial={true} exitBeforeEnter>
                 <Switch location={location} key={location.pathname}>
-                  <Route exact path="/home" component={withRouter(Home)} />
+                  <Route exact path="/" component={withRouter(Home)} />
                   <Route
                     exact
                     path="/serie/:serieId"
