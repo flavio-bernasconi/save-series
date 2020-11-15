@@ -44,7 +44,7 @@ function App() {
         </BrowserRouter>
       ) : (
         <Switch>
-          <Route exact path="/login" component={Authentication} />
+          <Route exact path="/" component={Authentication} />
           {/* <Route render={() => <Redirect to="/login" />} /> */}
         </Switch>
       )}
