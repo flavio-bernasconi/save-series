@@ -16,12 +16,17 @@
     }
   }
   .form {
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     background-color: white;
     margin: auto;
     padding: 100px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
+    box-sizing: border-box;
+    @media (max-width: 600px) {
+      padding: 30px 20px;
+    }
     .input-field {
       margin-bottom: 60px;
       display: flex;
@@ -42,6 +47,9 @@
       border: none;
       background-color: $black;
       color: white;
+      @media (max-width: 600px) {
+        width: 100%;
+      }
     }
   }
 }

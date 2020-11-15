@@ -19,12 +19,20 @@
 }
 
 .form-container .form {
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   background-color: white;
   margin: auto;
   padding: 100px;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .form-container .form {
+    padding: 30px 20px;
+  }
 }
 
 .form-container .form .input-field {
@@ -50,6 +58,12 @@
   border: none;
   background-color: #292929;
   color: white;
+}
+
+@media (max-width: 600px) {
+  .form-container .form .btn-submit {
+    width: 100%;
+  }
 }
 
 body {
