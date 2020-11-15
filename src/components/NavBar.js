@@ -7,7 +7,7 @@ import { DB_FOLDERS } from "../utils/const";
 export function NavBar(props) {
   return (
     <div className="navbar">
-      <Link to="/home">home</Link>
+      <Link to="/">home</Link>
       <button
         onClick={() =>
           auth.signOut().then((res) => {
