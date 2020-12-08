@@ -52,8 +52,9 @@ export const SliderMovies = inject("rootStore")(
                     exit={
                       indexSelected === index
                         ? {
-                            opacity: 0,
-                            y: "100vh",
+                            x: "0",
+                            left: "0",
+                            scale: 0,
                             transition: {
                               duration: 1,
                               delay: 0.6,
@@ -62,11 +63,10 @@ export const SliderMovies = inject("rootStore")(
                           }
                         : {
                             opacity: 0,
-                            x: randomnumber(100, -100) + "vw",
-                            y: randomnumber(100, -100) + "vh",
+                            y: "120vh",
                             scale: 0.5,
                             transition: {
-                              duration: 0.5,
+                              duration: 0.3,
                               delay: 0.2,
                               ...transition,
                             },

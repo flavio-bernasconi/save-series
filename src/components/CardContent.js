@@ -1,4 +1,6 @@
 import React from "react";
+import { cleanDataset } from "../utils/Helpers";
+import ButtonsSave from "./ButtonsSave";
 
 const GenericDetail = ({ movieDbKey }) =>
   movieDbKey.map((e, i) => <h1 key={i}>{e.name}</h1>);
@@ -29,6 +31,7 @@ export function CardContent({ selectedSerie }) {
         <div className="title-description">
           <h1>{name}</h1>
           <p>{overview}</p>
+          <ButtonsSave movie={cleanDataset([selectedSerie])[0]} />
         </div>
         <div className="table-details">
           <GenericRow movieDbKey={created_by} label={"Created by:"} />

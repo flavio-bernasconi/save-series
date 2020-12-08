@@ -6,9 +6,11 @@ import { motion } from "framer-motion";
 
 export const Home = inject("rootStore")(
   observer(function Home({
-    rootStore: { fetchSeries, selectedSerie, isSaving },
+    rootStore: { fetchSeries, selectedSerie, isSaving, setSelectedSerie },
   }) {
+    console.log("home");
     useEffect(() => {
+      setSelectedSerie({});
       fetchSeries();
     }, []);
 
@@ -17,10 +19,13 @@ export const Home = inject("rootStore")(
     const { value, folder, image } = isSaving;
 
     return (
-      <div>
+      <motion.div
+        className="wrapper"
+        initial="exit"
+        animate="enter"
+        exit="exit"
+      >
         {/* <div style={{ height: "200vh" }}></div> */}
-        <ListMovies folderDb="to-watch" />
-        <ListMovies folderDb="watched" />
         <SliderMovies />
         <div className="wrapper-animation">
           <motion.img
@@ -31,7 +36,7 @@ export const Home = inject("rootStore")(
           <div className={`folder ${value ? "active" : ""}`}>{folder}</div>
           <div className={`folder-back ${value ? "active" : ""}`} />
         </div>
-      </div>
+      </motion.div>
     );
   })
 );

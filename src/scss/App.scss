@@ -1,7 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;700&display=swap");
 
 @import "./const";
+@import "./mixin";
 @import "./form";
+@import "./dashboard";
+@import "./listSaved";
 
 body {
   /* overflow: hidden; */
@@ -10,7 +13,8 @@ body {
   font-family: "Josefin Sans";
 }
 
-button:focus {
+button:focus,
+input {
   outline: none;
 }
 
@@ -24,14 +28,23 @@ p {
   top: 0;
   background-color: transparent;
   width: 100%;
-  z-index: 999;
+  z-index: 99999;
   height: $navbar-height;
+  background-color: rgb(27, 27, 27);
+  box-shadow: 0 4px 20px black;
+  @include flexCenter;
   a {
     font-size: 2rem;
-    color: black;
+    color: white;
     text-decoration: none;
     margin-right: 100px;
   }
+}
+.mt-1 {
+  margin-top: 200px;
+}
+.wrapper {
+  padding-top: $navbar-height;
 }
 
 img {
@@ -58,7 +71,7 @@ img {
     width: calc(100% / 5 - 20px);
     margin-bottom: 20px;
     position: relative;
-    opacity: 0.7;
+    opacity: 1;
     transition: opacity 0.3s;
     @media (max-width: $breakpoint-small-desktop) {
       width: calc(100% / 4 - 20px);
@@ -73,6 +86,13 @@ img {
     }
     &:hover {
       cursor: pointer;
+      .card-buttons-container,
+      .button-info {
+        display: block;
+      }
+      img {
+        opacity: 0.5;
+      }
     }
     img {
       width: 100%;
@@ -103,12 +123,14 @@ img {
           display: none;
         }
         .btn-open {
-          width: 100%;
+          width: 85%;
           background-color: white;
           padding: 15px 0;
           display: flex;
           align-items: center;
           margin: auto;
+          border-radius: 50px;
+          margin-bottom: 5px;
           p {
             width: 100%;
             text-align: center;
@@ -120,16 +142,17 @@ img {
           flex-wrap: wrap;
           color: white;
           .btn-save {
-            width: 100%;
+            width: 85%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             margin: auto;
-
             background-color: rgb(92, 92, 92);
             opacity: 0.7;
             padding: 20px 0;
+            border-radius: 50px;
+            margin-bottom: 5px;
             p {
               font-weight: bold;
               text-transform: uppercase;
@@ -151,14 +174,6 @@ img {
       display: none;
       font-size: 4rem;
       color: white;
-    }
-
-    &:hover {
-      opacity: 1;
-      .card-buttons-container,
-      .button-info {
-        display: block;
-      }
     }
   }
 }
@@ -253,7 +268,7 @@ img {
           width: 50%;
           padding: 40px;
           position: sticky;
-          top: $navbar-height;
+          top: calc(#{$navbar-height} + 50px);
           height: auto;
           @media (max-width: $breakpoint-tablet) {
             position: relative;
@@ -318,7 +333,7 @@ img {
 
   .buttons-save {
     position: sticky;
-    top: 0;
+    top: $navbar-height;
     width: 100%;
     z-index: 999;
     display: flex;
@@ -353,6 +368,8 @@ img {
     background-color: $black;
     max-width: $max-width-container;
     margin: 50px auto;
+    padding: 0 50px;
+    box-sizing: border-box;
     h1 {
       width: 100%;
       font-size: 3rem;

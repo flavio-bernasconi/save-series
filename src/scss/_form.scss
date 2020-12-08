@@ -4,15 +4,17 @@
   align-items: center;
   width: 100%;
   justify-content: center;
+  background-color: white;
   .btns-group {
     button {
       width: 50%;
       border: 0;
       padding: 20px 0;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
     }
     .btn-active {
-      background-color: black;
-      color: white;
+      background-color: antiquewhite;
     }
   }
   .form {
@@ -24,6 +26,7 @@
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     box-sizing: border-box;
+    box-shadow: 2px 3px 30px rgba(black, 0.3);
     @media (max-width: 600px) {
       padding: 30px 20px;
     }
@@ -40,13 +43,21 @@
         height: 40px;
         width: 100%;
         font-size: 20px;
+        border-radius: 30px;
+        padding-left: 15px;
+        font-size: 15px;
+        border: solid 1px gray;
       }
     }
     .btn-submit {
-      padding: 20px 30px;
+      padding: 15px 40px;
       border: none;
-      background-color: $black;
-      color: white;
+      background-color: antiquewhite;
+      color: black;
+      border-radius: 50px;
+      &:hover {
+        cursor: pointer;
+      }
       @media (max-width: 600px) {
         width: 100%;
       }

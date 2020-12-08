@@ -8,6 +8,7 @@ export function NavBar(props) {
   return (
     <div className="navbar">
       <Link to="/">home</Link>
+      <Link to="/dashboard">dashboard</Link>
       <button
         onClick={() =>
           auth.signOut().then((res) => {

@@ -10,11 +10,25 @@ export function hideFooter() {
 export const randomnumber = (max, min) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
 
-export const extractDataFromMovie = ({ id, name, poster_path }) => {
-  return { id, title: name, image: poster_path || "" };
+export const extractDataFromMovie = (index, { id, name, poster_path }) => {
+  return { index, id, title: name, image: poster_path || "" };
 };
 
 export const cleanDataset = (dataset) =>
-  dataset.map((movie) => {
-    return extractDataFromMovie(movie);
+  dataset.map((movie, i) => {
+    return extractDataFromMovie(i, movie);
   });
+
+export function removeDuplicates(originalArray, prop) {
+  var newArray = [];
+  var lookupObject = {};
+
+  for (var i in originalArray) {
+    lookupObject[originalArray[i][prop]] = originalArray[i];
+  }
+
+  for (i in lookupObject) {
+    newArray.push(lookupObject[i]);
+  }
+  return newArray;
+}

@@ -10,6 +10,8 @@ import { Home } from "./Pages/Home";
 import { SingleMoviePage } from "./Pages/SingleMoviePage";
 import { NavBar } from "./components/NavBar";
 import { Redirect } from "react-router";
+import { Dashboard } from "./Pages/Dashboard";
+import { Drag } from "./Pages/Drag";
 
 const rootStore = RootStore.create();
 window.STATE = rootStore;
@@ -28,18 +30,22 @@ function App() {
         <BrowserRouter>
           <NavBar />
           <Route
-            render={({ location }) => (
-              <AnimatePresence initial={true} exitBeforeEnter>
-                <Switch location={location} key={location.pathname}>
-                  <Route exact path="/" component={withRouter(Home)} />
-                  <Route
-                    exact
-                    path="/serie/:serieId"
-                    component={withRouter(SingleMoviePage)}
-                  />
-                </Switch>
-              </AnimatePresence>
-            )}
+            render={({ location }) => {
+              console.log(location);
+              return (
+                <AnimatePresence initial={true} exitBeforeEnter>
+                  <Switch location={location} key={location.pathname}>
+                    <Route exact path="/" component={Home} />
+                    <Route path="/dashboard" component={Dashboard} />
+                    <Route
+                      exact
+                      path="/serie/:serieId"
+                      component={SingleMoviePage}
+                    />
+                  </Switch>
+                </AnimatePresence>
+              );
+            }}
           />
         </BrowserRouter>
       ) : (

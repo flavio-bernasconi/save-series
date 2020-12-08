@@ -12,7 +12,7 @@ const ButtonsSave = inject("rootStore")(
     colors,
   }) {
     const saveMovie = (movie, refDb) => {
-      TutorialDataService.addDataTo(refDb, movie).then((res) => {
+      TutorialDataService.addDataTo(refDb, movie).then(() => {
         setIsSaving(true, refDb, movie.image);
         setTimeout(() => {
           setIsSaving(false);

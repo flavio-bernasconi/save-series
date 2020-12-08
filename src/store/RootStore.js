@@ -13,6 +13,7 @@ const mainUrl =
   "https://api.themoviedb.org/3/tv/popular?api_key=085f025c352f6e30faea971db0667d31";
 
 const MovieModel = t.model("MovieModel", {
+  index: t.optional(t.number, 0),
   id: t.optional(t.number, 0),
   title: t.optional(t.string, ""),
   image: t.optional(t.string, ""),

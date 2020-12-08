@@ -21,6 +21,7 @@ export const SingleMoviePage = inject("rootStore")(
 
     useEffect(() => {
       const getIdFromUrl = location.pathname.slice(7);
+      console.log(getIdFromUrl);
       window.scrollTo(0, 0);
       if (Object.keys(selectedSerie).length === 0)
         fetchSingleSerieDetails(getIdFromUrl);
@@ -39,7 +40,7 @@ export const SingleMoviePage = inject("rootStore")(
     return (
       Object.keys(selectedSerie).length > 0 && (
         <motion.div
-          className="single-serie"
+          className="wrapper single-serie "
           initial="exit"
           animate="enter"
           exit="exit"
@@ -89,10 +90,9 @@ export const SingleMoviePage = inject("rootStore")(
             }}
             exit={{ opacity: 0 }}
           >
-            <ButtonsSave movie={cleanDataset([selectedSerie])[0]} />
+            {/* <ButtonsSave movie={cleanDataset([selectedSerie])[0]} /> */}
             <CardContent selectedSerie={selectedSerie} />
           </motion.div>
-          {/* <ImagesSerie /> */}
 
           <RelatedSeries />
         </motion.div>
