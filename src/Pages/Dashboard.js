@@ -19,9 +19,9 @@ export const Dashboard = inject("rootStore")(
         animate="enter"
         exit="exit"
       >
+        <Drag />
         <ListMovies folderDb="toWatch" />
         <ListMovies folderDb="watching" />
-        <Drag />
       </motion.div>
     );
   })

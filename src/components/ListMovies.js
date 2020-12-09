@@ -16,9 +16,7 @@ export default function ListMovies({ folderDb }) {
       <h1>{folderDb}</h1>
       {todoList && keys && (
         <ul className="list-saved">
-          {console.log(todoList)}
           {Object.values(todoList).map((item, i) => {
-            console.log(item.id);
             return (
               <li className="list-item" key={i}>
                 <img

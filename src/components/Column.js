@@ -3,7 +3,6 @@ import { Item } from "./Item";
 import { Droppable } from "react-beautiful-dnd";
 
 export const Column = ({ list, id }) => {
-  console.log(list);
   return (
     <Droppable droppableId={id}>
       {(provided) => (
@@ -20,8 +19,7 @@ export const Column = ({ list, id }) => {
                   key={info.val().id}
                   text={info.val().title}
                   index={index}
-                  // key={info.id}
-                  // text={info.title}
+                  info={info.val()}
                 />
               );
             })}
